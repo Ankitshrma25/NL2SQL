@@ -1,0 +1,18 @@
+# Core pipeline
+sqlglot>=25.0
+rapidfuzz>=3.0
+SQLAlchemy>=2.0
+pandas>=2.0
+
+# Offline SLM (CPU wheels are enough; see docs/MODEL_SETUP.md)
+torch>=2.1
+transformers>=4.40
+huggingface_hub>=0.23
+accelerate>=0.30
+sentencepiece>=0.1.99   # only needed for T5-style seq2seq models
+
+# UI
+streamlit>=1.32
+
+# Tests
+pytest>=7.4

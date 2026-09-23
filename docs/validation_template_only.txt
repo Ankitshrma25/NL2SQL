@@ -1,0 +1,53 @@
+Table 'transactions': 50 rows | backend: template only
+
+[ 1] PASS  Show me all transactions where the amount is greater than 50000.
+     source=template_fallback  slm_calls=0  23 ms
+     SQL: SELECT * FROM transactions WHERE amount > 50000
+       attempt 1 (fallback): SELECT * FROM transactions WHERE amount > 50000  ->  valid
+
+[ 2] PASS  List all UPI transactions.
+     source=template_fallback  slm_calls=0  7 ms
+     SQL: SELECT * FROM transactions WHERE payment_mode = 'UPI'
+       attempt 1 (fallback): SELECT * FROM transactions WHERE payment_mode = 'UPI'  ->  valid
+
+[ 3] PASS  What is the total amount credited across all transactions?
+     source=template_fallback  slm_calls=0  9 ms
+     SQL: SELECT SUM(amount) AS sum_amount FROM transactions WHERE transaction_type = 'Credit'
+       attempt 1 (fallback): SELECT SUM(amount) AS sum_amount FROM transactions WHERE transaction_type = 'Credit'  ->  valid
+
+[ 4] PASS  How many debit transactions are there?
+     source=template_fallback  slm_calls=0  6 ms
+     SQL: SELECT COUNT(*) AS count FROM transactions WHERE transaction_type = 'Debit'
+       attempt 1 (fallback): SELECT COUNT(*) AS count FROM transactions WHERE transaction_type = 'Debit'  ->  valid
+
+[ 5] PASS  Which merchant category has the highest total transaction amount?
+     source=template_fallback  slm_calls=0  7 ms
+     SQL: SELECT merchant_category, SUM(amount) AS sum_amount FROM transactions GROUP BY merchant_category ORDER BY sum_amount DESC LIMIT 1
+       attempt 1 (fallback): SELECT merchant_category, SUM(amount) AS sum_amount FROM transactions GROUP BY merchant_category ORDER BY sum_amount DESC LIMIT 1  ->  valid
+
+[ 6] PASS  Show the top 5 highest value transactions.
+     source=template_fallback  slm_calls=0  4 ms
+     SQL: SELECT * FROM transactions ORDER BY amount DESC LIMIT 5
+       attempt 1 (fallback): SELECT * FROM transactions ORDER BY amount DESC LIMIT 5  ->  valid
+
+[ 7] PASS  What is the average transaction amount for each payment mode?
+     source=template_fallback  slm_calls=0  6 ms
+     SQL: SELECT payment_mode, AVG(amount) AS avg_amount FROM transactions GROUP BY payment_mode ORDER BY payment_mode
+       attempt 1 (fallback): SELECT payment_mode, AVG(amount) AS avg_amount FROM transactions GROUP BY payment_mode ORDER BY payment_mode  ->  valid
+
+[ 8] PASS  List all transactions where the balance after the transaction is below 50000.
+     source=template_fallback  slm_calls=0  5 ms
+     SQL: SELECT * FROM transactions WHERE balance_after_transaction < 50000
+       attempt 1 (fallback): SELECT * FROM transactions WHERE balance_after_transaction < 50000  ->  valid
+
+[ 9] PASS  How many transactions happened at branch BLR001?
+     source=template_fallback  slm_calls=0  4 ms
+     SQL: SELECT COUNT(*) AS count FROM transactions WHERE branch_code = 'BLR001'
+       attempt 1 (fallback): SELECT COUNT(*) AS count FROM transactions WHERE branch_code = 'BLR001'  ->  valid
+
+[10] PASS  List all transactions done through Cheque, sorted by date.
+     source=template_fallback  slm_calls=0  5 ms
+     SQL: SELECT * FROM transactions WHERE payment_mode = 'Cheque' ORDER BY transaction_date ASC
+       attempt 1 (fallback): SELECT * FROM transactions WHERE payment_mode = 'Cheque' ORDER BY transaction_date ASC  ->  valid
+
+10/10 passed in 0.1 s

@@ -1,0 +1,67 @@
+{
+  "csv": "task2_bank_transactions_sample.csv",
+  "schema": "task2_bank_schema.txt",
+  "table": "transactions",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Show me all transactions where the amount is greater than 50000.",
+      "expected_sql": "SELECT * FROM transactions WHERE amount > 50000;",
+      "ordered": false
+    },
+    {
+      "id": 2,
+      "question": "List all UPI transactions.",
+      "expected_sql": "SELECT * FROM transactions WHERE payment_mode = 'UPI';",
+      "ordered": false
+    },
+    {
+      "id": 3,
+      "question": "What is the total amount credited across all transactions?",
+      "expected_sql": "SELECT SUM(amount) AS total_credited FROM transactions WHERE transaction_type = 'Credit';",
+      "ordered": false
+    },
+    {
+      "id": 4,
+      "question": "How many debit transactions are there?",
+      "expected_sql": "SELECT COUNT(*) AS debit_count FROM transactions WHERE transaction_type = 'Debit';",
+      "ordered": false
+    },
+    {
+      "id": 5,
+      "question": "Which merchant category has the highest total transaction amount?",
+      "expected_sql": "SELECT merchant_category, SUM(amount) AS total_amount FROM transactions GROUP BY merchant_category ORDER BY total_amount DESC LIMIT 1;",
+      "ordered": true
+    },
+    {
+      "id": 6,
+      "question": "Show the top 5 highest value transactions.",
+      "expected_sql": "SELECT * FROM transactions ORDER BY amount DESC LIMIT 5;",
+      "ordered": true
+    },
+    {
+      "id": 7,
+      "question": "What is the average transaction amount for each payment mode?",
+      "expected_sql": "SELECT payment_mode, AVG(amount) AS avg_amount FROM transactions GROUP BY payment_mode;",
+      "ordered": false
+    },
+    {
+      "id": 8,
+      "question": "List all transactions where the balance after the transaction is below 50000.",
+      "expected_sql": "SELECT * FROM transactions WHERE balance_after_transaction < 50000;",
+      "ordered": false
+    },
+    {
+      "id": 9,
+      "question": "How many transactions happened at branch BLR001?",
+      "expected_sql": "SELECT COUNT(*) AS txn_count FROM transactions WHERE branch_code = 'BLR001';",
+      "ordered": false
+    },
+    {
+      "id": 10,
+      "question": "List all transactions done through Cheque, sorted by date.",
+      "expected_sql": "SELECT * FROM transactions WHERE payment_mode = 'Cheque' ORDER BY transaction_date;",
+      "ordered": true
+    }
+  ]
+}

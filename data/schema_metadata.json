@@ -1,0 +1,20 @@
+{
+  "_comment": "Optional human-supplied semantics. The pipeline introspects the DB itself; this file only adds descriptions and synonyms. Unknown tables/columns are ignored.",
+  "tables": {
+    "transactions": {
+      "description": "One row per retail purchase transaction",
+      "synonyms": ["transaction", "purchases", "orders", "sales"],
+      "columns": {
+        "transaction_id": {"description": "Unique transaction identifier", "synonyms": ["order id"]},
+        "customer_name": {"description": "Full name of the customer", "synonyms": ["customer", "buyer", "client"]},
+        "city": {"description": "City where the purchase was made", "synonyms": ["location", "town"]},
+        "category": {"description": "Product category", "synonyms": ["product category", "segment"]},
+        "payment_method": {"description": "How the customer paid", "synonyms": ["payment mode", "payment type", "paid via"]},
+        "status": {"description": "Transaction status", "synonyms": ["state", "order status"]},
+        "quantity": {"description": "Number of units purchased", "synonyms": ["units", "items"]},
+        "amount": {"description": "Transaction value in INR", "synonyms": ["sales", "revenue", "value", "spend", "price", "spent"]},
+        "transaction_date": {"description": "Date of purchase (YYYY-MM-DD)", "synonyms": ["date", "purchase date", "when"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# Column descriptions for task2_bank_transactions_sample.csv (as given in the assessment brief)
+# Format: one "column: description" per line. Any table can be described the same way.
+transaction_id: Unique identifier for the transaction.
+account_number: Bank account number the transaction was posted against.
+customer_name: Name of the account holder.
+transaction_date: Date the transaction occurred (YYYY-MM-DD).
+transaction_type: Whether the transaction was a Credit or a Debit.
+amount: Transaction amount.
+balance_after_transaction: Account balance immediately after this transaction was applied.
+merchant_category: Category of the merchant/transaction, e.g. Groceries, Salary, Fuel, Transfer.
+branch_code: Code of the bank branch that processed the transaction.
+payment_mode: Channel used: UPI / NEFT / IMPS / Card / Cash / Cheque.
