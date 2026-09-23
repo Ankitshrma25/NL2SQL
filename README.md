@@ -1,5 +1,3 @@
-# Task 2 — Offline Text-to-SQL Chatbot (Small Language Model)
-
 A chatbot that takes **any table and plain-English descriptions of its columns at runtime**, turns questions about
 it into SQL with a **small language model running fully offline**, checks every query independently, and returns the
 results.
